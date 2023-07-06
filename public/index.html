@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Shayari Generator</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f5f5f5;
+        padding: 20px;
+        text-align: center;
+    }
+
+    h1 {
+        color: #333;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    input[type="text"] {
+        padding: 8px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        margin-bottom: 10px;
+        width: 200px;
+    }
+
+    button {
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #4CAF50;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #45a049;
+    }
+
+    #shayariContainer {
+        margin-top: 20px;
+        font-size: 18px;
+        line-height: 1.5;
+        padding: 10px;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+</style>
+</head>
+<body>
+  <h1>Shayari Generator</h1>
+  <label for="wordInput">Enter a Word:</label>
+  <input type="text" id="wordInput">
+  <button id="generateButton">Generate Shayari</button>
+  <div id="shayariContainer"></div>
+
+  <script>
+    const generateButton = document.getElementById('generateButton');
+    const wordInput = document.getElementById('wordInput');
+    const shayariContainer = document.getElementById('shayariContainer');
+
+    generateButton.addEventListener('click', () => {
+      const word = wordInput.value;
+      if (word.trim() !== '') {
+        fetch(`/generate-shayari?word=${encodeURIComponent(word)}`)
+          .then(response => response.json())
+          .then(data => {
+            const shayari = data.message;
+            console.log(data);
+            shayariContainer.textContent = shayari;
+          })
+          .catch(error => console.error(error));
+      }
+    });
+  </script>
+</body>
+</html>
