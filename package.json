@@ -19,5 +19,8 @@
     "nodemon": "^2.0.22",
     "openai": "^3.3.0",
     "readline-sync": "^1.4.10"
+  },
+  "engines": {
+    "node": ">=14.20.1"
   }
 }
