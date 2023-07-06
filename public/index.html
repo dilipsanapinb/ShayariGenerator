@@ -68,7 +68,7 @@
     generateButton.addEventListener('click', () => {
       const word = wordInput.value;
       if (word.trim() !== '') {
-        fetch(`/generate-shayari?word=${encodeURIComponent(word)}`)
+        fetch(`https://shayari-genarator-app.onrender.com/generate-shayari?word=${encodeURIComponent(word)}`)
           .then(response => response.json())
           .then(data => {
             const shayari = data.message;
